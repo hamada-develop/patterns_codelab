@@ -1,0 +1,21 @@
+{
+  "metadata": {
+    "title": "My Document",
+    "modified": "1999-11-18"
+  },
+  "blocks": [
+    {
+      "type": "h1",
+      "text": "Chapter 1"
+    },
+    {
+      "type": "p",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    },
+    {
+      "type": "checkbox",
+      "checked": false,
+      "text": "Learn Dart 3"
+    }
+  ]
+}
