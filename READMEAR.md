@@ -1,17 +1,17 @@
 # patterns_codelab
 
-Flutter project created to practice **Dart 3 Patterns & Records** using the official Google codelab:
+مشروع Flutter بسيط للتدريب على **Dart 3 Patterns & Records** باستخدام الـ codelab الرسمي من Google:
 
 **Dive into Dart's patterns and records**
 [https://codelabs.developers.google.com/codelabs/dart-patterns-records#3](https://codelabs.developers.google.com/codelabs/dart-patterns-records#3)
 
 ---
 
-## ✅ What I learned (with project examples)
+## ✅ ماذا تعلمت؟ (مع أمثلة من نفس المشروع)
 
-### 1) Records (return multiple values)
+### 1) Records (إرجاع أكثر من قيمة)
 
-Instead of creating a class just to return metadata, we returned a **record**:
+بدل ما أعمل `class` مخصوص للـ metadata، رجّعتها كـ **record**:
 
 ```dart
 (String, {DateTime modified}) get metadata {
@@ -21,15 +21,15 @@ Instead of creating a class just to return metadata, we returned a **record**:
 
 ---
 
-### 2) Destructuring records (unpack into local variables)
+### 2) Destructuring للـ Records (تفكيك الـ record لمتغيرات)
 
-We unpacked the record into variables in one line:
+فكّيت الـ record لمتغيرات في سطر واحد:
 
 ```dart
 final (title, :modified) = document.metadata;
 ```
 
-Then used them directly in the UI:
+وبعدين استخدمت القيم مباشرة في الـ UI:
 
 ```dart
 Text(title);
@@ -38,9 +38,9 @@ Text('Last modified: $modified');
 
 ---
 
-### 3) Read JSON safely using `if-case` + map patterns
+### 3) قراءة JSON بأمان باستخدام `if-case` + map patterns
 
-Instead of many `if` checks and `as` casts, we validated and extracted values using patterns:
+بدل ما أكتب `if` كثيرة و `as` casts، استخدمت patterns للتحقق واستخراج القيم:
 
 ```dart
 (String, {DateTime modified}) get metadata {
@@ -55,9 +55,10 @@ Instead of many `if` checks and `as` casts, we validated and extracted values us
 
 ---
 
-### 4) Map patterns ignore extra keys
+### 4) Map patterns تتجاهل الـ keys الزائدة
 
-Our JSON block may contain extra keys like `checked`, but the map pattern only matches what we need:
+بعض الـ blocks في الـ JSON ممكن تحتوي على keys إضافية مثل `checked`،
+لكن الـ map pattern يطابق فقط المفاتيح التي نحددها ويترك باقي البيانات:
 
 ```dart
 factory Block.fromJson(Map<String, dynamic> json) {
@@ -70,9 +71,9 @@ factory Block.fromJson(Map<String, dynamic> json) {
 
 ---
 
-### 5) Switch statements with patterns
+### 5) Switch statement باستخدام patterns
 
-We styled blocks based on their type:
+حددت تصميم النص حسب نوع البلوك:
 
 ```dart
 switch (block.type) {
@@ -87,9 +88,9 @@ switch (block.type) {
 
 ---
 
-### 6) Switch expressions (return a value directly)
+### 6) Switch expression (إرجاع قيمة مباشرة)
 
-The same logic became shorter and cleaner:
+نفس المنطق السابق ولكن بشكل أقصر وأنظف، لأن `switch` هنا يرجّع قيمة مباشرة:
 
 ```dart
 final textStyle = switch (block.type) {
@@ -101,9 +102,9 @@ final textStyle = switch (block.type) {
 
 ---
 
-### 7) Object patterns (match properties inside objects)
+### 7) Object patterns (مطابقة خصائص داخل Object)
 
-We formatted the modified date using a switch on a `Duration` object:
+قمت بتنسيق تاريخ التعديل باستخدام `switch` على كائن من النوع `Duration`:
 
 ```dart
 return switch (difference) {
@@ -117,9 +118,9 @@ return switch (difference) {
 
 ---
 
-### 8) Guards (`when`) to add conditions after a match
+### 8) Guards (`when`) لإضافة شرط بعد المطابقة
 
-We added weeks formatting using guards:
+أضفت حالات خاصة لعرض الأسابيع عندما يكون الفرق أكبر من 7 أيام:
 
 ```dart
 return switch (difference) {
@@ -139,11 +140,11 @@ return switch (difference) {
 
 ---
 
-### 9) `sealed` classes + exhaustive switching
+### 9) sealed classes + switch شامل (Exhaustive switch)
 
-We used `sealed` so Dart can enforce exhaustive `switch` handling of all block types.
+استخدمت `sealed` لكي يضمن Dart أن الـ `switch` يغطي كل أنواع الـ blocks بدون الحاجة لـ `default`.
 
-**Sealed superclass + factory parsing:**
+**sealed superclass + factory parsing:**
 
 ```dart
 sealed class Block {
@@ -161,7 +162,7 @@ sealed class Block {
 }
 ```
 
-**Exhaustive UI rendering using object patterns:**
+**عرض الـ UI بشكل شامل باستخدام object patterns:**
 
 ```dart
 child: switch (block) {
