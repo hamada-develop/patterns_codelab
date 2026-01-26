@@ -1,5 +1,7 @@
 # patterns_codelab
 
+![App Screenshot](assets/images/screenshot.png)
+
 Flutter project created to practice **Dart 3 Patterns & Records** using the official Google codelab:
 
 **Dive into Dart's patterns and records**
